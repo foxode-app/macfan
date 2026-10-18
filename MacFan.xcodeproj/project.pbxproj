@@ -290,6 +290,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.foxode.MacFan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -381,6 +382,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 0.1.0;
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.foxode.MacFan.FanHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
