@@ -1,0 +1,443 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F0A000000000000000000012 /* MacFanKit in Frameworks */ = {isa = PBXBuildFile; productRef = F0A000000000000000000011 /* MacFanKit */; };
+		F0A00000000000000000001C /* MacFanKit in Frameworks */ = {isa = PBXBuildFile; productRef = F0A00000000000000000001B /* MacFanKit */; };
+		F0A000000000000000000020 /* MacFanHelper in Embed Helper */ = {isa = PBXBuildFile; fileRef = F0A000000000000000000013 /* MacFanHelper */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F0A000000000000000000024 /* com.foxode.MacFan.FanHelper.plist in Copy Launch Daemon */ = {isa = PBXBuildFile; fileRef = F0A000000000000000000021 /* com.foxode.MacFan.FanHelper.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F0A00000000000000000001D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0A000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F0A000000000000000000015;
+			remoteInfo = MacFanHelper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F0A00000000000000000001F /* Embed Helper */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				F0A000000000000000000020 /* MacFanHelper in Embed Helper */,
+			);
+			name = "Embed Helper";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0A000000000000000000023 /* Copy Launch Daemon */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LaunchDaemons;
+			dstSubfolderSpec = 1;
+			files = (
+				F0A000000000000000000024 /* com.foxode.MacFan.FanHelper.plist in Copy Launch Daemon */,
+			);
+			name = "Copy Launch Daemon";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F0A000000000000000000004 /* MacFan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacFan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0A000000000000000000013 /* MacFanHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MacFanHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0A000000000000000000021 /* com.foxode.MacFan.FanHelper.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = com.foxode.MacFan.FanHelper.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F0A000000000000000000005 /* MacFan */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MacFan;
+			sourceTree = "<group>";
+		};
+		F0A000000000000000000014 /* MacFanHelper */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MacFanHelper;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F0A000000000000000000008 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0A000000000000000000012 /* MacFanKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0A000000000000000000017 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0A00000000000000000001C /* MacFanKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F0A000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				F0A000000000000000000005 /* MacFan */,
+				F0A000000000000000000014 /* MacFanHelper */,
+				F0A000000000000000000022 /* LaunchDaemons */,
+				F0A000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F0A000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F0A000000000000000000004 /* MacFan.app */,
+				F0A000000000000000000013 /* MacFanHelper */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F0A000000000000000000022 /* LaunchDaemons */ = {
+			isa = PBXGroup;
+			children = (
+				F0A000000000000000000021 /* com.foxode.MacFan.FanHelper.plist */,
+			);
+			path = LaunchDaemons;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F0A000000000000000000006 /* MacFan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0A00000000000000000000A /* Build configuration list for PBXNativeTarget "MacFan" */;
+			buildPhases = (
+				F0A000000000000000000007 /* Sources */,
+				F0A000000000000000000008 /* Frameworks */,
+				F0A000000000000000000009 /* Resources */,
+				F0A00000000000000000001F /* Embed Helper */,
+				F0A000000000000000000023 /* Copy Launch Daemon */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F0A00000000000000000001E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F0A000000000000000000005 /* MacFan */,
+			);
+			name = MacFan;
+			packageProductDependencies = (
+				F0A000000000000000000011 /* MacFanKit */,
+			);
+			productName = MacFan;
+			productReference = F0A000000000000000000004 /* MacFan.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F0A000000000000000000015 /* MacFanHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0A000000000000000000018 /* Build configuration list for PBXNativeTarget "MacFanHelper" */;
+			buildPhases = (
+				F0A000000000000000000016 /* Sources */,
+				F0A000000000000000000017 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F0A000000000000000000014 /* MacFanHelper */,
+			);
+			name = MacFanHelper;
+			packageProductDependencies = (
+				F0A00000000000000000001B /* MacFanKit */,
+			);
+			productName = MacFanHelper;
+			productReference = F0A000000000000000000013 /* MacFanHelper */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F0A000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2710;
+				LastUpgradeCheck = 2710;
+				TargetAttributes = {
+					F0A000000000000000000006 = {
+						CreatedOnToolsVersion = 27.1;
+					};
+					F0A000000000000000000015 = {
+						CreatedOnToolsVersion = 27.1;
+					};
+				};
+			};
+			buildConfigurationList = F0A00000000000000000000D /* Build configuration list for PBXProject "MacFan" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ja,
+			);
+			mainGroup = F0A000000000000000000002;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F0A000000000000000000010 /* XCLocalSwiftPackageReference "MacFanKit" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = F0A000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F0A000000000000000000006 /* MacFan */,
+				F0A000000000000000000015 /* MacFanHelper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F0A000000000000000000009 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F0A000000000000000000007 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0A000000000000000000016 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F0A00000000000000000001E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F0A000000000000000000015 /* MacFanHelper */;
+			targetProxy = F0A00000000000000000001D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F0A00000000000000000000B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = UKKM3K9LF7;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MacFan;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.foxode.MacFan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		F0A00000000000000000000C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = UKKM3K9LF7;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MacFan;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				OTHER_CODE_SIGN_FLAGS = "--timestamp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.foxode.MacFan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		F0A00000000000000000000E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F0A00000000000000000000F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		F0A000000000000000000019 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = UKKM3K9LF7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.foxode.MacFan.FanHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		F0A00000000000000000001A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = UKKM3K9LF7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1.0;
+				OTHER_CODE_SIGN_FLAGS = "--timestamp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.foxode.MacFan.FanHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F0A00000000000000000000A /* Build configuration list for PBXNativeTarget "MacFan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0A00000000000000000000B /* Debug */,
+				F0A00000000000000000000C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0A00000000000000000000D /* Build configuration list for PBXProject "MacFan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0A00000000000000000000E /* Debug */,
+				F0A00000000000000000000F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0A000000000000000000018 /* Build configuration list for PBXNativeTarget "MacFanHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0A000000000000000000019 /* Debug */,
+				F0A00000000000000000001A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		F0A000000000000000000010 /* XCLocalSwiftPackageReference "MacFanKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = MacFanKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F0A000000000000000000011 /* MacFanKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MacFanKit;
+		};
+		F0A00000000000000000001B /* MacFanKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MacFanKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = F0A000000000000000000001 /* Project object */;
+}
