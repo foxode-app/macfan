@@ -5,8 +5,9 @@ the repository contains:
 
 - **MacFan.app**, the menu bar app. It shows the CPU temperature in the menu bar — or, as chosen in Settings, the GPU
   temperature, fan speed, CPU usage and memory usage — and refreshes at an interval from 1 second to 5 minutes. Its
-  fans are left to macOS by default; in Settings they can run at a constant speed or follow a temperature. The
-  interface is in English and Japanese, switchable in Settings.
+  fans are left to macOS by default; in Settings they can run at a constant speed or follow a temperature. Its
+  monitor shows which apps and processes use the memory, and can quit them. The interface is in English and Japanese,
+  switchable in Settings.
 - **MacFanHelper**, a privileged helper (launchd daemon) inside the app that writes fan speeds as root.
 - **MacFanKit**, a Swift package that reads and writes the System Management Controller (SMC), implements fan control
   and collects the readings the app displays.
@@ -38,7 +39,7 @@ If `xcode-select -p` prints `/Library/Developer/CommandLineTools`, either switch
 | `MacFan.xcodeproj`, `MacFan/` | Menu bar app (SwiftUI); strings in `MacFan/Localizable.xcstrings` (English, Japanese) |
 | `MacFanHelper/` | Privileged helper: applies the fan settings it receives from the app over XPC |
 | `LaunchDaemons/` | The helper's launchd property list, copied into `MacFan.app/Contents/Library/LaunchDaemons` |
-| `MacFanKit/Sources/MacFanKit` | SMC access (`AppleSMC`), fan control (`FanController`), readings for the app (`SystemSampler`) |
+| `MacFanKit/Sources/MacFanKit` | SMC access (`AppleSMC`), fan control (`FanController`), readings for the app (`SystemSampler`, `ProcessMemory`) |
 | `MacFanKit/Sources/macfan` | Command-line tool |
 | `MacFanKit/Tests/MacFanKitTests` | Unit tests (Swift Testing); fan control is tested against an in-memory fake SMC |
 
@@ -92,6 +93,26 @@ default). Each reading sits in a block of fixed width, wide enough for its large
 a reading that gains or loses a digit moves nothing. With meters, the block's background shows how much of the
 reading's limit is in use — all CPU time or memory, the fan's maximum speed, or 100 °C: green below 70 %, amber from
 70 % and red from 90 %.
+
+## Monitor
+
+**Monitor…**, between Settings… and Quit MacFan in the menu bar panel, opens a window that shows what uses the memory.
+It refreshes every 3 seconds while it is open.
+
+- **Memory Used** is counted as in Activity Monitor, and as in the menu bar: app memory, wired memory (the kernel,
+  drivers and the GPU) and compressed memory. Cached files are shown beside it but not counted, since macOS frees them
+  whenever apps need the room. **Memory Pressure** tells whether memory is actually short.
+- Below it, the user's apps and processes are listed with the memory each uses (Activity Monitor's Memory column),
+  largest first. An app's helper processes count as the app, and its row expands to list them. Processes outside apps
+  show their arguments; a Java program shows its main class instead of the JVM's options, so a Gradle daemon reads
+  `java GradleDaemon 9.1.0`. Past the first 100 rows, the rest share one row: SwiftUI's table trips an AppKit check on
+  macOS 27 above about 200 rows, and the rest use a few megabytes each.
+- The ⓧ button asks before quitting. **Quit** asks an app to quit as its Quit command would, and ends other processes
+  with `SIGTERM`; **Force Quit** ends every process of the row with `SIGKILL`, losing unsaved changes. A process is
+  only signaled if its process ID has not been reused since it was listed.
+
+Only the logged-in user's processes are listed: other users' processes, such as WindowServer and macOS's daemons, can
+only be measured as root, and MacFan's root helper is kept to fan control.
 
 ## Fan control
 

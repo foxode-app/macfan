@@ -136,22 +136,6 @@ private enum MeterLevel {
             case .high: (0xffc14f, 0xab770c)
             case .critical: (0xff6a6d, 0xe0393b)
             }
-        return NSColor(name: nil) { appearance in
-            NSColor(rgb: appearance.isDark ? dark : light)
-        }
-    }
-}
-
-extension NSAppearance {
-    fileprivate var isDark: Bool {
-        bestMatch(from: [.aqua, .darkAqua]) == .darkAqua
-    }
-}
-
-extension NSColor {
-    fileprivate convenience init(rgb: Int) {
-        self.init(
-            srgbRed: CGFloat(rgb >> 16 & 0xff) / 255, green: CGFloat(rgb >> 8 & 0xff) / 255,
-            blue: CGFloat(rgb & 0xff) / 255, alpha: 1)
+        return NSColor(light: light, dark: dark)
     }
 }

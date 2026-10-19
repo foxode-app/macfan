@@ -7,6 +7,7 @@ struct StatusPanel: View {
     let monitor: SystemMonitor
     let fanControl: FanControl
     @Environment(\.openSettings) private var openSettings
+    @Environment(\.openWindow) private var openWindow
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -39,6 +40,11 @@ struct StatusPanel: View {
             HStack {
                 Button("Settings…") {
                     openSettings()
+                    NSApp.activate()
+                }
+                Spacer()
+                Button("Monitor…") {
+                    openWindow(id: MonitorView.windowID)
                     NSApp.activate()
                 }
                 Spacer()

@@ -19,6 +19,12 @@ struct MacFanApp: App {
             SettingsView(monitor: monitor, fanControl: fanControl, language: languageBinding)
                 .environment(\.locale, language.locale)
         }
+
+        Window("Monitor", id: MonitorView.windowID) {
+            MonitorView()
+                .environment(\.locale, language.locale)
+        }
+        .defaultSize(width: 560, height: 680)
     }
 
     private var languageBinding: Binding<AppLanguage> {

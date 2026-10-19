@@ -43,8 +43,20 @@ public struct CPUTicks: Equatable, Sendable {
 
 /// Memory in use, counted like Activity Monitor's "Memory Used": app memory, wired and compressed.
 public struct MemoryUsage: Equatable, Sendable {
-    public let usedBytes: UInt64
+    /// Memory that processes allocated for themselves, other than what they marked as purgeable.
+    public let appBytes: UInt64
+    /// Memory that must stay in RAM, used by the kernel, drivers and the GPU.
+    public let wiredBytes: UInt64
+    /// RAM holding processes' memory that macOS compressed to make room.
+    public let compressedBytes: UInt64
+    /// Files kept in RAM to open them faster, and purgeable memory. macOS frees both when processes need the room, so
+    /// they are not counted as used.
+    public let cachedFilesBytes: UInt64
     public let totalBytes: UInt64
+
+    public var usedBytes: UInt64 {
+        appBytes + wiredBytes + compressedBytes
+    }
 
     public var fraction: Double {
         totalBytes > 0 ? Double(usedBytes) / Double(totalBytes) : 0
@@ -67,9 +79,50 @@ public struct MemoryUsage: Equatable, Sendable {
     init(statistics: vm_statistics64, pageSize: UInt64, totalBytes: UInt64) {
         let internalPages = UInt64(statistics.internal_page_count)
         let purgeablePages = UInt64(statistics.purgeable_count)
-        let appPages = internalPages > purgeablePages ? internalPages - purgeablePages : 0
-        let pages = appPages + UInt64(statistics.wire_count) + UInt64(statistics.compressor_page_count)
-        usedBytes = pages * pageSize
+        appBytes = (internalPages > purgeablePages ? internalPages - purgeablePages : 0) * pageSize
+        wiredBytes = UInt64(statistics.wire_count) * pageSize
+        compressedBytes = UInt64(statistics.compressor_page_count) * pageSize
+        cachedFilesBytes = (UInt64(statistics.external_page_count) + purgeablePages) * pageSize
         self.totalBytes = totalBytes
+    }
+}
+
+/// Swap space: memory macOS moved from RAM to the startup disk.
+public struct SwapUsage: Equatable, Sendable {
+    public let usedBytes: UInt64
+    public let totalBytes: UInt64
+
+    public static func current() -> SwapUsage? {
+        var usage = xsw_usage()
+        var size = MemoryLayout<xsw_usage>.size
+        guard sysctlbyname("vm.swapusage", &usage, &size, nil, 0) == 0 else { return nil }
+        return SwapUsage(usedBytes: usage.xsu_used, totalBytes: usage.xsu_total)
+    }
+}
+
+/// How hard macOS has to work to find memory, as Activity Monitor's Memory Pressure graph shows it. Memory that is
+/// nearly all used is normal on macOS; pressure tells whether processes are short of it.
+public enum MemoryPressure: Equatable, Sendable {
+    case normal
+    /// macOS is compressing memory and swapping to make room.
+    case warning
+    /// macOS is out of room: processes slow down, and macOS may ask to quit apps.
+    case critical
+
+    public static func current() -> MemoryPressure? {
+        var level: Int32 = 0
+        var size = MemoryLayout<Int32>.size
+        guard sysctlbyname("kern.memorystatus_vm_pressure_level", &level, &size, nil, 0) == 0 else { return nil }
+        return MemoryPressure(level: level)
+    }
+
+    /// `level` is the kernel's pressure level: 1, 2 or 4, as in dispatch's memory pressure events.
+    init?(level: Int32) {
+        switch level {
+        case 1: self = .normal
+        case 2: self = .warning
+        case 4: self = .critical
+        default: return nil
+        }
     }
 }

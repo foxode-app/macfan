@@ -1,6 +1,34 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%lld processes" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld process"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld processes"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld プロセス"
+          }
+        }
+      }
+    },
     "Above %lld°C, the fans always go back to macOS." : {
       "localizations" : {
         "en" : {
@@ -13,6 +41,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld°Cを超えると、設定にかかわらずmacOSの制御に戻します。"
+          }
+        }
+      }
+    },
+    "App Memory" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Memory"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリケーションメモリ"
           }
         }
       }
@@ -81,6 +125,38 @@
         }
       }
     },
+    "Cached Files" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cached Files"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャッシュされたファイル"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンセル"
+          }
+        }
+      }
+    },
     "Change Speed Gradually" : {
       "localizations" : {
         "en" : {
@@ -97,6 +173,22 @@
         }
       }
     },
+    "Compressed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compressed"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "圧縮"
+          }
+        }
+      }
+    },
     "Constant Speed" : {
       "localizations" : {
         "en" : {
@@ -109,6 +201,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "回転数を一定値"
+          }
+        }
+      }
+    },
+    "Couldn’t quit “%@”: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn’t quit “%@”: %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%1$@”を終了できませんでした: %2$@"
           }
         }
       }
@@ -141,6 +249,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CPU使用率"
+          }
+        }
+      }
+    },
+    "Critical" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Critical"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "危険"
           }
         }
       }
@@ -257,6 +381,38 @@
         }
       }
     },
+    "Force Quit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force Quit"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "強制終了"
+          }
+        }
+      }
+    },
+    "Force Quit ends it at once, and unsaved changes are lost." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force Quit ends it at once, and unsaved changes are lost."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "強制終了するとすぐに終了し、保存していない変更は失われます。"
+          }
+        }
+      }
+    },
     "GPU Temperature" : {
       "localizations" : {
         "en" : {
@@ -369,6 +525,38 @@
         }
       }
     },
+    "Memory" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memory"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メモリ"
+          }
+        }
+      }
+    },
+    "Memory Pressure: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memory Pressure: %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メモリプレッシャー: %@"
+          }
+        }
+      }
+    },
     "Memory Usage" : {
       "localizations" : {
         "en" : {
@@ -381,6 +569,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "メモリ使用率"
+          }
+        }
+      }
+    },
+    "Memory Used" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memory Used"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用済みメモリ"
+          }
+        }
+      }
+    },
+    "Memory Used is app memory, wired memory and compressed memory, as in Activity Monitor. Cached files are freed whenever apps need the room." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memory Used is app memory, wired memory and compressed memory, as in Activity Monitor. Cached files are freed whenever apps need the room."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用済みメモリは、アクティビティモニタと同じく、アプリケーションメモリ・確保されているメモリ・圧縮の合計です。キャッシュされたファイルは、アプリに必要になればいつでも解放されます。"
           }
         }
       }
@@ -417,6 +637,86 @@
         }
       }
     },
+    "Monitor" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monitor"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "モニタ"
+          }
+        }
+      }
+    },
+    "Monitor…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monitor…"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "モニタ…"
+          }
+        }
+      }
+    },
+    "Name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "名前"
+          }
+        }
+      }
+    },
+    "Normal" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Normal"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正常"
+          }
+        }
+      }
+    },
+    "Only your own processes are listed. macOS’s own, such as WindowServer, can only be measured as an administrator." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only your own processes are listed. macOS’s own, such as WindowServer, can only be measured as an administrator."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表示されるのは自分のプロセスだけです。WindowServer など macOS 自身のプロセスは、管理者でないと計測できません。"
+          }
+        }
+      }
+    },
     "Open at Login" : {
       "localizations" : {
         "en" : {
@@ -449,6 +749,38 @@
         }
       }
     },
+    "Other Processes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other Processes"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "その他のプロセス"
+          }
+        }
+      }
+    },
+    "Quit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quit"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "終了"
+          }
+        }
+      }
+    },
     "Quit MacFan" : {
       "localizations" : {
         "en" : {
@@ -461,6 +793,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "MacFanを終了"
+          }
+        }
+      }
+    },
+    "Quit “%@”?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quit “%@”?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”を終了しますか？"
+          }
+        }
+      }
+    },
+    "Quit…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quit…"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "終了…"
           }
         }
       }
@@ -593,6 +957,22 @@
         }
       }
     },
+    "Swap Used" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swap Used"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用済みスワップ"
+          }
+        }
+      }
+    },
     "Text Only" : {
       "localizations" : {
         "en" : {
@@ -641,6 +1021,22 @@
         }
       }
     },
+    "Warning" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warning"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "警告"
+          }
+        }
+      }
+    },
     "Window titles and other system text switch after MacFan restarts." : {
       "localizations" : {
         "en" : {
@@ -653,6 +1049,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ウインドウのタイトルなど、システムが表示する文字はMacFanの再起動後に切り替わります。"
+          }
+        }
+      }
+    },
+    "Wired Memory" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wired Memory"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確保されているメモリ"
           }
         }
       }

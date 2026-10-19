@@ -33,16 +33,47 @@ struct MemoryUsageTests {
         statistics.purgeable_count = 100
         statistics.wire_count = 200
         statistics.compressor_page_count = 50
+        statistics.external_page_count = 300
         statistics.free_count = 5000
         let usage = MemoryUsage(statistics: statistics, pageSize: 16384, totalBytes: 16384 * 4000)
+        #expect(usage.appBytes == 900 * 16384)
+        #expect(usage.wiredBytes == 200 * 16384)
+        #expect(usage.compressedBytes == 50 * 16384)
         #expect(usage.usedBytes == 1150 * 16384)
         #expect(usage.fraction == 1150.0 / 4000.0)
+    }
+
+    @Test func countsFileCacheAndPurgeableMemoryAsCachedFiles() {
+        var statistics = vm_statistics64()
+        statistics.internal_page_count = 1000
+        statistics.purgeable_count = 100
+        statistics.external_page_count = 300
+        let usage = MemoryUsage(statistics: statistics, pageSize: 16384, totalBytes: 16384 * 4000)
+        #expect(usage.cachedFilesBytes == 400 * 16384)
     }
 
     @Test func readsTheCurrentUsage() throws {
         let usage = try #require(MemoryUsage.current())
         #expect(usage.usedBytes > 0)
-        #expect(usage.usedBytes <= usage.totalBytes)
+        #expect(usage.usedBytes + usage.cachedFilesBytes <= usage.totalBytes)
+    }
+
+    @Test func readsTheCurrentSwap() throws {
+        let swap = try #require(SwapUsage.current())
+        #expect(swap.usedBytes <= swap.totalBytes)
+    }
+}
+
+struct MemoryPressureTests {
+    @Test func mapsTheKernelLevels() {
+        #expect(MemoryPressure(level: 1) == .normal)
+        #expect(MemoryPressure(level: 2) == .warning)
+        #expect(MemoryPressure(level: 4) == .critical)
+        #expect(MemoryPressure(level: 0) == nil)
+    }
+
+    @Test func readsTheCurrentLevel() {
+        #expect(MemoryPressure.current() != nil)
     }
 }
 
