@@ -85,6 +85,14 @@ swift format lint --recursive MacFanKit                             # check form
 swift format --in-place --recursive MacFanKit                       # apply formatting
 ```
 
+## Menu bar
+
+Settings → Menu Bar chooses the readings shown in the menu bar and their style: text only, or with meters (the
+default). Each reading sits in a block of fixed width, wide enough for its largest value (100 °C, 9999 rpm, 100 %), so
+a reading that gains or loses a digit moves nothing. With meters, the block's background shows how much of the
+reading's limit is in use — all CPU time or memory, the fan's maximum speed, or 100 °C: green below 70 %, amber from
+70 % and red from 90 %.
+
 ## Fan control
 
 Settings → Fan offers **Automatic (System)**, the default, and **Custom**:

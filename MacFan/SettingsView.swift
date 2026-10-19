@@ -9,6 +9,7 @@ struct SettingsView: View {
     @Binding var language: AppLanguage
     @Environment(\.locale) private var locale
     @AppStorage(MenuBarItems.storageKey) private var menuBarItems = MenuBarItems.default
+    @AppStorage(MenuBarStyle.storageKey) private var menuBarStyle = MenuBarStyle.default
     @State private var opensAtLogin = SMAppService.mainApp.status == .enabled
     @State private var loginItemError: String?
 
@@ -33,6 +34,11 @@ struct SettingsView: View {
             }
 
             Section {
+                Picker("Style", selection: $menuBarStyle) {
+                    Text("Text Only").tag(MenuBarStyle.text)
+                    Text("With Meters").tag(MenuBarStyle.meters)
+                }
+                .pickerStyle(.segmented)
                 ForEach(MenuBarItem.allCases) { item in
                     Toggle(item.title, isOn: shownBinding(for: item))
                 }

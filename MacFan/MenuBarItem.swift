@@ -22,6 +22,15 @@ enum MenuBarItem: String, CaseIterable, Identifiable {
     }
 }
 
+/// How the menu bar shows the metrics: as text alone, or in blocks whose background is a meter.
+enum MenuBarStyle: String {
+    case text
+    case meters
+
+    static let storageKey = "menuBarStyle"
+    static let `default` = MenuBarStyle.meters
+}
+
 /// The metrics shown in the menu bar, kept in `MenuBarItem.allCases` order. Stored in user defaults as a
 /// comma-separated list so that `@AppStorage` can hold it.
 struct MenuBarItems: RawRepresentable, Equatable {
@@ -61,23 +70,57 @@ struct MenuBarItems: RawRepresentable, Equatable {
         self = MenuBarItems(selected)
     }
 
-    /// Compact menu bar text, such as `45°C  1000 rpm  CPU 12%`.
-    func text(for snapshot: SystemSnapshot) -> String {
-        items.map { item in
+    /// Compact menu bar text for each metric, such as `45°C`, `1000 rpm` and `CPU 12%`, with its meter.
+    func segments(for snapshot: SystemSnapshot) -> [MenuBarSegment] {
+        let widestTemperature = Format.temperature(100)
+        let widestPercent = Format.percent(1)
+        return items.map { item in
             switch item {
             case .cpuTemperature:
                 // A bare temperature is the CPU's, unless the GPU's is shown too.
-                (contains(.gpuTemperature) ? "CPU " : "") + Format.temperature(snapshot.cpuTemperature)
+                MenuBarSegment(
+                    label: contains(.gpuTemperature) ? "CPU " : "", value: Format.temperature(snapshot.cpuTemperature),
+                    widestValue: widestTemperature, meter: Self.temperatureMeter(snapshot.cpuTemperature))
             case .gpuTemperature:
-                "GPU " + Format.temperature(snapshot.gpuTemperature)
+                MenuBarSegment(
+                    label: "GPU ", value: Format.temperature(snapshot.gpuTemperature), widestValue: widestTemperature,
+                    meter: Self.temperatureMeter(snapshot.gpuTemperature))
             case .fanSpeed:
-                Format.rpm(snapshot.fans.map(\.actualRPM).max())
+                MenuBarSegment(
+                    label: "", value: Format.rpm(snapshot.fans.map(\.actualRPM).max()), widestValue: Format.rpm(9999),
+                    meter: snapshot.fans.filter { $0.maximumRPM > 0 }.map { $0.actualRPM / $0.maximumRPM }.max())
             case .cpuUsage:
-                "CPU " + Format.percent(snapshot.cpuUsage)
+                MenuBarSegment(
+                    label: "CPU ", value: Format.percent(snapshot.cpuUsage), widestValue: widestPercent,
+                    meter: snapshot.cpuUsage)
             case .memoryUsage:
-                "MEM " + Format.percent(snapshot.memory?.fraction)
+                MenuBarSegment(
+                    label: "MEM ", value: Format.percent(snapshot.memory?.fraction), widestValue: widestPercent,
+                    meter: snapshot.memory?.fraction)
             }
         }
-        .joined(separator: "  ")
+    }
+
+    /// A temperature fills its meter at 100 °C.
+    private static func temperatureMeter(_ celsius: Double?) -> Double? {
+        celsius.map { $0 / 100 }
+    }
+}
+
+/// One metric's block in the menu bar. The menu bar keeps room for `widestText`, so a reading that gains or loses a
+/// digit does not move the other metrics.
+struct MenuBarSegment {
+    let text: String
+    let widestText: String
+    /// How much of the metric's limit is in use, from 0 to 1: the share of CPU time or memory, the busiest fan's share
+    /// of its maximum speed, or the temperature's share of 100 °C. `nil` without a reading.
+    let meter: Double?
+
+    /// `widestValue` has the most digits the value is expected to have. Digits are drawn equally wide, so every value
+    /// with that many digits takes the same room.
+    init(label: String, value: String, widestValue: String, meter: Double?) {
+        text = label + value
+        widestText = label + widestValue
+        self.meter = meter.map { min(max($0, 0), 1) }
     }
 }

@@ -577,6 +577,38 @@
         }
       }
     },
+    "Style" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Style"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタイル"
+          }
+        }
+      }
+    },
+    "Text Only" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text Only"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文字のみ"
+          }
+        }
+      }
+    },
     "To control the fans, allow MacFan in System Settings → General → Login Items & Extensions." : {
       "localizations" : {
         "en" : {
@@ -621,6 +653,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ウインドウのタイトルなど、システムが表示する文字はMacFanの再起動後に切り替わります。"
+          }
+        }
+      }
+    },
+    "With Meters" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "With Meters"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "グラフ付き"
           }
         }
       }
